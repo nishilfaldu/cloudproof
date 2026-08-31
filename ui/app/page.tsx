@@ -19,6 +19,12 @@ const sevColor: Record<string, string> = {
   low: "bg-blue-500",
 };
 
+const statusPill: Record<string, string> = {
+  pass: "bg-green-600",
+  fail: "bg-red-600",
+  error: "bg-amber-500",
+};
+
 export default function Home() {
   const [findings, setFindings] = useState<Finding[] | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -65,8 +71,13 @@ export default function Home() {
           <div key={f.control} className="rounded-xl bg-zinc-900 p-4">
             <div className="mb-2 flex items-center justify-between">
               <span className="font-mono text-sm">{f.control}</span>
-              <span className={`rounded px-2 py-0.5 text-xs font-bold text-white ${sevColor[f.severity] ?? "bg-zinc-600"}`}>
-                {f.severity}
+              <span className="flex items-center gap-2">
+                <span className={`rounded px-2 py-0.5 text-xs font-bold uppercase tracking-wide text-white ${statusPill[f.status] ?? "bg-zinc-600"}`}>
+                  {f.status}
+                </span>
+                <span className={`rounded px-2 py-0.5 text-xs font-bold text-white ${sevColor[f.severity] ?? "bg-zinc-600"}`}>
+                  {f.severity}
+                </span>
               </span>
             </div>
             <p className="text-sm text-zinc-300">{f.evidence}</p>
