@@ -1,1 +1,19 @@
-.env.local
+# env
+.env
+.env.*
+!.env.example
+
+# dependencies
+node_modules/
+
+# builds
+dist/
+build/
+out/
+.next/
+
+# misc
+.DS_Store
+*.pem
+.vercel
+*.tsbuildinfo
