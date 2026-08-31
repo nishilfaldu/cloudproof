@@ -7,8 +7,7 @@ It scans an AWS account against a few hygiene checks, normalizes the results int
 ## Architecture
 
 ```
-Next.js UI (React 19, Tailwind 4)  --/api/findings-->  Go server (stdlib net/http)  -->  AWS SDK v2 (read-only calls)
-        ui/                                                 cmd/server + internal/          IAM, S3
+ui/ (Next.js)  --/api/findings-->  Go server :8080  -->  AWS (read-only)
 ```
 
 - **Go server** (`cmd/server`, `internal/`): one endpoint, `GET /api/findings`. Each check runs in its own goroutine with a `sync.WaitGroup` and a 3-second `context.WithTimeout`, so a slow or stuck check can't hang the batch - it comes back as an `error` finding instead.
