@@ -8,7 +8,7 @@ import (
 )
 
 func FindingsHandler(w http.ResponseWriter, r *http.Request) {
-	findings := checks.RunAll(r.Context(), []checks.Check{checks.S3Encryption, checks.IAMMFA})
+	findings := checks.RunAll(r.Context(), []checks.Check{checks.S3Encryption, checks.S3PublicAccess, checks.IAMMFA})
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(findings)
 }
