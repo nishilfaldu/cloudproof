@@ -30,7 +30,10 @@ export default function Home() {
         return r.json();
       })
       .then(setFindings)
-      .catch((e) => setError(e.message));
+      .catch((e) => {
+        if (e.name === "AbortError") return; // StrictMode dev double-effect aborts the first fetch
+        setError(e.message);
+      });
   };
 
   useEffect(() => { 
