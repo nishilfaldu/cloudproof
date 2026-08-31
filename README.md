@@ -20,7 +20,7 @@ ui/ (Next.js)  --/api/findings-->  Go server :8080  -->  AWS (read-only)
 | --- | --- | --- |
 | `iam-mfa` | IAM console users with no MFA device (severity: critical) | Live AWS (`iam:ListUsers`, `iam:ListMFADevices`) |
 | `s3-encryption-at-rest` | Buckets without default encryption (severity: high) | Fixture data (mocked while I build the real call) |
-| `s3-public-access` | Buckets open to the public (severity: high) | Planned - metadata stubbed, check not wired up yet |
+| `s3-public-access` | Buckets open to the public (severity: high) | Fixture data (mocked while I build the real call) |
 
 ## Running locally
 
